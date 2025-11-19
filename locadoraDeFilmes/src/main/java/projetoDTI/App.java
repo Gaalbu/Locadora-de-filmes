@@ -6,7 +6,7 @@ public class App
     {
         Menu locadoraMenu = new Menu();
 
-        //locadoraMenu.executar();
+        locadoraMenu.executar();
         
     }
 }
