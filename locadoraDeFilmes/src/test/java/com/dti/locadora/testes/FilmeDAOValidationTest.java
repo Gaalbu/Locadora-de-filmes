@@ -1,5 +1,9 @@
 package com.dti.locadora.testes;
 
+import com.dti.locadora.util.ConexaoDatabase;
+import com.dti.locadora.util.TabelaSQLite;
+import java.sql.Connection;
+import java.sql.SQLException;
 import com.dti.locadora.dao.FilmeDAO;
 import com.dti.locadora.model.Filme;
 import org.junit.jupiter.api.*;
@@ -22,8 +26,14 @@ class FilmeDAOValidationTest {
     //Config ANTES de cada teste
     @BeforeEach
     void setUP(){
-        //Simplificação da limpeza no banco de dados. 
+        //Simplificação da limpeza no banco de dados.   
         filmeDAO = new FilmeDAO();
+
+        try (Connection conn = ConexaoDatabase.conectar()) {
+            TabelaSQLite.criarTabelas(conn);
+        } catch (SQLException e) {
+            fail("Erro ao criar tabela para testes: " + e.getMessage());
+        }
     }
 
     //Validando a criação/inserção de cadastros
@@ -36,6 +46,8 @@ class FilmeDAOValidationTest {
         Filme filme = new Filme("O teste vazio", 42, "Terror", dataVazia);
 
         int idSalvo = filmeDAO.inserir(filme);
+
+        assertTrue(idSalvo > 0);
 
         Filme filmeSalvo = filmeDAO.buscarPorId(idSalvo);
 
@@ -57,7 +69,7 @@ class FilmeDAOValidationTest {
         Filme filmeOriginal = new Filme("Titulo muito original", 99, "Comédia", "2022-01-02 01:02:03");
         int idSalvo = filmeDAO.inserir(filmeOriginal);
 
-        assertTrue(idSalvo > 0, "Pré-condição falhou: Inserção do filme original falhou.");
+        assertTrue(idSalvo > 0);
 
         Filme filmeSalvo = filmeDAO.buscarPorId(idSalvo);
 

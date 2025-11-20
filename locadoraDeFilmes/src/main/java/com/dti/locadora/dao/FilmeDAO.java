@@ -31,7 +31,7 @@ public class FilmeDAO implements FilmeDAOInterface{
         int filmeId = -1; //ID padrão para debug de falhas.
 
         try (Connection conn = conectar();
-             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
+             PreparedStatement pstmt = conn.prepareStatement(sql)){
             
             
             pstmt.setString(1, filme.getTitulo());
@@ -50,17 +50,20 @@ public class FilmeDAO implements FilmeDAOInterface{
             int linhasAfetadas = pstmt.executeUpdate();
             
             if(linhasAfetadas > 0){
-                //Pega aqui o ID
-                try(ResultSet generatedKeys = pstmt.getGeneratedKeys()){
-                    filmeId = generatedKeys.getInt(1);
-                    logger.info("Filme inserido com sucesso! ID: {}, Título: {}", filmeId, filme.getTitulo());
-                }
+                // Select last_insert_rowid() retorna sempre o último ID gerado NESTA conexão.
+                try(Statement stmt = conn.createStatement();
+                     ResultSet rs = stmt.executeQuery("SELECT last_insert_rowid()")){
+                        if(rs.next()){
+                            filmeId = rs.getInt(1);
+                            logger.info("Filme inserido com sucesso! ID: {}", filmeId);
+                        }
+                     }
             }
-
-            return filmeId;        
+            return filmeId;   
+                 
 
         } catch (SQLException e) {
-            logger.error("Erro ao inserir filme {}", e.getMessage(), e);
+            logger.error("Erro ao inserir filme: {}", e.getMessage(), e);
             return -1; //Retorna erro
         }
         
