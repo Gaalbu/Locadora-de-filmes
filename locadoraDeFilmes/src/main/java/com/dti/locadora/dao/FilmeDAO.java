@@ -62,7 +62,7 @@ public class FilmeDAO implements FilmeDAOInterface{
                      ResultSet rs = stmt.executeQuery("SELECT last_insert_rowid()")){
                         if(rs.next()){
                             filmeId = rs.getInt(1);
-                            logger.info("Filme inserido com sucesso! ID: {}", filmeId);
+                            logger.debug("Filme inserido com sucesso! ID: {}", filmeId);
                         }
                      }
             }
@@ -90,7 +90,7 @@ public class FilmeDAO implements FilmeDAOInterface{
                 Filme filme = new Filme(rs.getInt("id"), rs.getString("titulo"), rs.getInt("duracaoMinutos"), rs.getString("genero"), rs.getString("anoLancamento"));
                 filmes.add(filme);
             }
-            logger.info("Busca de filmes finalizada. Total encontrado: {}", filmes.size());
+            logger.debug("Busca de filmes finalizada. Total encontrado: {}", filmes.size());
             
             return filmes; //Retorno se tudo deu certo
 
@@ -114,7 +114,7 @@ public class FilmeDAO implements FilmeDAOInterface{
 
             if(rs.next()){
                 filme = new Filme(rs.getInt("id"),rs.getString("titulo"),rs.getInt("duracaoMinutos"),rs.getString("genero"),rs.getString("anoLancamento"));
-                logger.info("Filme encontrado: {}", filme.getTitulo());
+                logger.debug("Filme encontrado: {}", filme.getTitulo());
             }else{
                 logger.warn("Filme com ID {} não encontrado no banco.", id);
             }
@@ -156,7 +156,7 @@ public class FilmeDAO implements FilmeDAOInterface{
 
             int linhasAfetadas = pstmt.executeUpdate();
             if (linhasAfetadas > 0){
-                logger.info("Filme ID {} atualizado com sucesso.", filme.getId());
+                logger.debug("Filme ID {} atualizado com sucesso.", filme.getId());
                 return true;
             }else{
                 logger.warn("Tentativa de atualizar filme ID {} falhou. Linhas afetadas: 0.", filme.getId());
@@ -178,7 +178,7 @@ public class FilmeDAO implements FilmeDAOInterface{
             int linhasAfetadas = pstmt.executeUpdate();
             
             if (linhasAfetadas > 0){
-                logger.info("Filme ID {} excluído com sucesso.", id);
+                logger.debug("Filme ID {} excluído com sucesso.", id);
                 return true;
             }else{
                 logger.warn("Tentativa de excluir filme ID {} falhou. Linhas afetadas: 0.", id);
