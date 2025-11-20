@@ -1,1 +1,8 @@
-projetoDTI\App.class
+com\dti\locadora\app\App.class
+locadoraFilmes\TabelaSQLite.class
+com\dti\locadora\model\Filme.class
+com\dti\locadora\dao\FilmeDAO.class
+locadoraFilmes\ConexaoDatabase.class
+com\dti\locadora\util\Leitor.class
+com\dti\locadora\app\Menu.class
+com\dti\locadora\dao\FilmeDAOInterface.class

@@ -1,4 +1,7 @@
-package projetoDTI;
+package com.dti.locadora.app;
+
+//Importando para sanar erros de compilação
+import com.dti.locadora.app.Menu;
 
 public class App 
 {

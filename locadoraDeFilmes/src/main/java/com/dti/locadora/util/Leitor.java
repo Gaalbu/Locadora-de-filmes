@@ -1,4 +1,4 @@
-package projetoDTI;
+package com.dti.locadora.util;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

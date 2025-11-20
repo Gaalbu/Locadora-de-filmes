@@ -1,1 +1,8 @@
-D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes\src\main\java\projetoDTI\App.java
+D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes\src\main\java\com\dti\locadora\app\App.java
+D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes\src\main\java\com\dti\locadora\app\Menu.java
+D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes\src\main\java\com\dti\locadora\dao\FilmeDAO.java
+D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes\src\main\java\com\dti\locadora\dao\FilmeDAOInterface.java
+D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes\src\main\java\com\dti\locadora\model\Filme.java
+D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes\src\main\java\com\dti\locadora\util\ConexaoDatabase.java
+D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes\src\main\java\com\dti\locadora\util\Leitor.java
+D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes\src\main\java\com\dti\locadora\util\TabelaSQLite.java
