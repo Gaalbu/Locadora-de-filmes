@@ -44,7 +44,17 @@
         <configuration>
           <!--Aqui fica o caminho da classe com o método main()-->
           <mainClass>com.dti.locadora.app.App</mainClass>
+
+          <systemProperties>
+            <systemProperty>
+              <key>org.slf4j.simpleLogger.defaultLogLevel</key> 
+              <!--Value: Nível de log(info = limpo; debug = detalhado)--> 
+              <value>info</value>
+            </systemProperty>
+          </systemProperties>
+        
         </configuration>
+      
       </plugin>
     </plugins>
   
