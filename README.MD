@@ -29,6 +29,21 @@ O projeto segue o padrão **DAO (Data Access Object)** para isolar a lógica de 
 
 * `resources/sql`: Scripts SQL para criação automática das tabelas.
 
+**<h2>📂 Descrição do Recurso: Filme</h2>**
+
+O sistema gerencia a entidade **Filme**, que representa o item principal do catálogo da locadora
+
+**Propriedades e Tipos de Dados**
+
+| Propriedade | Tipo (Java) | Tipo (SQL) | Obrigatório? | Descrição|
+
+**ID** | `int` | `INTEGER PK` | **Sim** | Identificador único gerado automaticamente pelo banco. |
+**Título** | `String` | `TEXT` | **Sim** | Nome do filme. Não pode ser vazio ou nulo. |
+**Duração** | `int` | `INTEGER` | **Sim** | Duração em minutos (Validação: 30 a 300 min). |
+**Gênero** | `String` | `TEXT` | **Não** | Gênero principal da obra (Ação, Drama, etc). |
+**Data Lançamento** | `String` | `DATETIME` | **Não** | Data de cadastro. *Se vazio, assume a data/hora atual.* |
+
+
 **<h2>⚙️ Pré-requisitos</h2>**
 Certifique-se de ter instalado:
 1. **Java JDK 17** (ou superior).
@@ -37,7 +52,8 @@ Certifique-se de ter instalado:
 **<h2>📦 Instalação e Build</h2>**
 1. **Clone o repositório**:
 
-`git clone [https://github.com/Gaalbu/Locadora-de-filmes.git](https://github.com/Gaalbu/Locadora-de-filmes.git)`
+`git clone https://github.com/Gaalbu/Locadora-de-filmes.git`
+
 `cd locadoraDeFilmes`
 
 2. **Compile e baixe as dependências**:
