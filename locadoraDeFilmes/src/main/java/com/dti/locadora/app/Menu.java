@@ -1,5 +1,6 @@
 package com.dti.locadora.app;
 import java.io.IOException;
+import java.net.Socket;
 
 import com.dti.locadora.util.Leitor;
 import com.dti.locadora.model.Filme;
@@ -80,12 +81,16 @@ public class Menu {
 
     private void cadastrarFilme(){
         System.out.println("\n --- Cadastro de filme --- ");
-        
         String tituloFilme = leitorInputs.lerString("Título: ");
         int duracao = leitorInputs.lerInt("Duração (em minutos): ");    
         String genero = leitorInputs.lerString("Gênero: ");
 
-        Filme novoFilme = new Filme(tituloFilme,duracao ,genero);
+        //Data é opcional aqui, sendo now() por default...
+        System.out.println("Data de lançamento (YYYY-MM-DD HH:MM:SS).");
+        String data = leitorInputs.lerString("Deixe VAZIO para usar data atual: ");
+
+        
+        Filme novoFilme = new Filme(tituloFilme,duracao ,genero, data);
         filmeDAO.inserir(novoFilme);
     }
     
@@ -121,32 +126,95 @@ public class Menu {
     }
 
     private void atualizarFilme(){
-
         System.out.println("\n --- Atualizar filme ---");
+        int id = leitorInputs.lerInt("Digite o ID do filme que deseja alterar: ");
+        
+        //Busca aqui (debug)
+        Filme filme = filmeDAO.buscarPorId(id);
 
-        int id = leitorInputs.lerInt("Digite o ID do filme a ser atualizado: ");
-
-        Filme filmeExistente = filmeDAO.buscarPorId(id);
-
-        if(filmeExistente == null){
-            System.out.println("Filme não encontrado. Operação cancelada.");
+        //VALIDAÇÃO se de fato um filme foi achado
+        if(filme == null){
+            System.out.println("Filme não encontrado");
             return;
         }
 
-        System.out.println("Dados atuais: " + filmeExistente.getTitulo());
-        System.out.println(">> Digite os NOVOS dados abaixo:");
+        //Loop específico para alterar
+        int opcao = -1;
+        while(opcao != 0){
+            System.out.println("\n--------------------------------");
+            System.out.println("Editando: " + filme.getTitulo()); // filme que tá no foco atual.
+            System.out.println("Dados Atuais: " + filme); // toString que formatamos previamente
+            System.out.println("--------------------------------");
+            System.out.println("O que você deseja alterar?");
+            System.out.println("1. Título");
+            System.out.println("2. Duração");
+            System.out.println("3. Gênero");
+            System.out.println("4. Data de Lançamento");
+            System.out.println("9. SALVAR E SAIR (Confirmar Alterações)");
+            System.out.println("0. CANCELAR (Sair sem salvar)");
 
-        String novoTitulo = leitorInputs.lerString("Novo Título: ");
-        int novaDuracao = leitorInputs.lerInt("Nova duração (min): ");
-        String novoGenero = leitorInputs.lerString("Novo gênero: ");
+            opcao = leitorInputs.lerInt("Escolha: ");
 
-        Filme filmeAtualizado = new Filme(id, novoTitulo, novaDuracao, novoGenero);
+            switch (opcao) {
+                case 1:
+                    System.out.println("Título atual: " + filme.getTitulo());
+                    String novoTitulo = leitorInputs.lerString("Novo título: ");
 
-        if(filmeDAO.atualizar(filmeAtualizado)){
-            System.out.println("Filme atualizado com sucesso!");
-        }else{
-            System.out.println("Erro ao atualizar filme.");
+                    //Aqui ainda altera apenas na memória de execução do programa.
+                    //O que significa que não foi para o db...
+                    filme.setTitulo(novoTitulo); 
+                    System.out.println("Título alterado na memória.");
+                    break;
+                
+                case 2:
+                    System.out.println("Duração atual: " + filme.getDuracaoMinutos());
+                    int novaDuracao = leitorInputs.lerInt("Nova duração: ");
+                    filme.setDuracaoMinutos(novaDuracao);
+                    System.out.println("Duração alterada na memória.");
+                    break;
+            
+                case 3:
+                    System.out.println("Gênero atual: " + filme.getGenero());
+                    String novoGenero = leitorInputs.lerString("Novo gênero: ");
+                    filme.setGenero(novoGenero);
+                    System.out.println("Gênero alterado na memória.");
+                    break;
+
+                case 4:
+                    System.out.println("Data atual: " + filme.getAnoLancamento());
+                    System.out.println("Deixe vazio para usar data/hora atual.");
+                    String novaData = leitorInputs.lerString("Nova data (YYYY-MM-DD HH:MM:SS): ");
+
+                    if(novaData.isEmpty()){
+                        novaData = null;
+                    } 
+
+                    filme.setAnoLancamento(novaData);
+                    System.out.println("Data alterada na memória.");
+                    break;
+
+                case 9:
+                    //Enviamos o objeto com os novos dados para atualizar no db!
+                    if(filmeDAO.atualizar(filme)){
+                        System.out.println("Filme atualizado com sucesso no banco de dados!");
+                    }else{
+                        System.out.println("Erro ao salvar alterações.");
+                    }
+                    return; //Sai do método
+
+                case 0:
+                    System.out.println("Operação cancelada. Nenhuma alteração foi salva.");
+                    return; //Sai como failsafe, sem alterações.
+
+                    
+                default:
+                    System.out.println("Opção inválida.");
+                    break;
+            }
         }
+
+
+        
     }
 
     private void excluirFilme(){

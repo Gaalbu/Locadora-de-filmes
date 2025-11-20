@@ -1,0 +1,2 @@
+Fazer testes unitários de atualizar em filmeDAO para 1 ou 0;
+Fazer testes unitários para garantir que cada método de filmeDAO tem mudança de fato.

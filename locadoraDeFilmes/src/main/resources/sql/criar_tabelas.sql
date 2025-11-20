@@ -5,7 +5,8 @@
 
 CREATE TABLE IF NOT EXISTS filmes(
     id INTEGER PRIMARY KEY,
-    duracaoMinutos INTEGER NOT NULL,
     titulo TEXT NOT NULL,
+    duracaoMinutos INTEGER NOT NULL,
+    genero TEXT,
     anoLancamento DATETIME 
 );

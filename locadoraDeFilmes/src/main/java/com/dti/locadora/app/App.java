@@ -16,16 +16,19 @@ public class App
 
         System.out.println("Inicializando sistema...");
 
+        
         //Testa se a conexão do banco de dados realmente está funcionando.
         try (Connection conn = ConexaoDatabase.conectar()){
             TabelaSQLite.criarTabelas(conn);
-        } catch (SQLException e) {
+        
+        } //Fecha a conexão ao banco.
+        
+        catch (SQLException e) {
             System.err.println("Erro fatal ao inicializar banco de dados: " + e.getMessage());
             return; //Encerra o progama se não conseguir criar o banco.
         }
         
         
-        //Execução do programa.
         menu.executar();
         
     }

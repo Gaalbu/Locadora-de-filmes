@@ -10,25 +10,34 @@ public class Filme {
     private String titulo;
     private int duracaoMinutos;
     private String genero;
+    private String anoLancamento;
 
-    public Filme(String titulo, int duracaoMinutos, String genero){
+    
+
+    public Filme(String titulo, int duracaoMinutos, String genero, String anoLancamento) {
         this.titulo = titulo;
         this.duracaoMinutos = duracaoMinutos;
         this.genero = genero;
+        this.anoLancamento = anoLancamento;
     }
 
     //Segundo construtor gerado para usarmos quando buscarmos um filme.
-    public Filme(int id,String titulo, int duracaoMinutos, String genero){
+    public Filme(int id, String titulo, int duracaoMinutos, String genero, String anoLancamento) {
         this.id = id;
         this.titulo = titulo;
         this.duracaoMinutos = duracaoMinutos;
         this.genero = genero;
+        this.anoLancamento = anoLancamento;
     }
 
     //Getters
 
     public int getId() {
         return id;
+    }
+
+    public String getAnoLancamento() {
+        return anoLancamento;
     }
 
     public String getTitulo() {
@@ -55,10 +64,18 @@ public class Filme {
         this.genero = genero; 
     }
 
-    @Override
-    public String toString(){
-        return String.format("ID: %d | Título: %s | Gênero: %s | Duração: %d min", id, titulo, genero, duracaoMinutos);
+    public void setAnoLancamento(String anoLancamento) {
+        this.anoLancamento = anoLancamento;
     }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %d | Título: %s | Gênero: %s | Data: %s", id, titulo, genero, anoLancamento);
+    }
+
+    
+
+    
 
 
 }
