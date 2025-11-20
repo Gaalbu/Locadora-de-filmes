@@ -5,9 +5,6 @@ import com.dti.locadora.util.TabelaSQLite;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-//Importando para sanar erros de compilação
-import com.dti.locadora.app.Menu;
-
 public class App 
 {
     public static void main( String[] args )

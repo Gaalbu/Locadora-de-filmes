@@ -1,6 +1,4 @@
 package com.dti.locadora.app;
-import java.io.IOException;
-import java.net.Socket;
 
 import com.dti.locadora.util.Leitor;
 import com.dti.locadora.model.Filme;

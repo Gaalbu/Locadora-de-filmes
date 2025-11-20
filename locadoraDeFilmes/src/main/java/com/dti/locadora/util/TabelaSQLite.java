@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 
@@ -16,7 +15,7 @@ public class TabelaSQLite {
     public static void criarTabelas(Connection conn){
         //Vai armazenar todo o nosso script para sua criação com os statements do SQLite.
         String scriptSql = "";
-        
+
         try{
 
             //Utilizando de ClassLoader para achar o arquivo e funcionar mesmo que seja JAR.
