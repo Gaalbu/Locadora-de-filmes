@@ -20,7 +20,7 @@ public class App
         //Testa se a conexão do banco de dados realmente está funcionando.
         try (Connection conn = ConexaoDatabase.conectar()){
             TabelaSQLite.criarTabelas(conn);
-        
+            System.out.println("Conexão aberta com sucesso!");
         } //Fecha a conexão ao banco.
         
         catch (SQLException e) {

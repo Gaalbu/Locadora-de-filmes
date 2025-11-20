@@ -82,12 +82,20 @@ public class Menu {
     private void cadastrarFilme(){
         System.out.println("\n --- Cadastro de filme --- ");
         String tituloFilme = leitorInputs.lerString("Título: ");
-        int duracao = leitorInputs.lerInt("Duração (em minutos): ");    
         String genero = leitorInputs.lerString("Gênero: ");
+        
+        int duracao = -1;
+        while (duracao < 1 || duracao > 300) {
+            //Valor arbitrário para duração de filmes.
+            duracao = leitorInputs.lerInt("Duração (30 a 300 minutos): ");
+            if (duracao < 30 || duracao > 300){
+                System.err.println("Duração inválida. Deve estar entre 30 e 300 minutos.");
+            }
+        }
+        
 
         //Data é opcional aqui, sendo now() por default...
-        System.out.println("Data de lançamento (YYYY-MM-DD HH:MM:SS).");
-        String data = leitorInputs.lerString("Deixe VAZIO para usar data atual: ");
+        String data = leitorInputs.lerDataValida("Digite a data de lançamento do filme ");
 
         
         Filme novoFilme = new Filme(tituloFilme,duracao ,genero, data);
@@ -169,6 +177,9 @@ public class Menu {
                 case 2:
                     System.out.println("Duração atual: " + filme.getDuracaoMinutos());
                     int novaDuracao = leitorInputs.lerInt("Nova duração: ");
+                    while (novaDuracao < 0) {
+                        novaDuracao = leitorInputs.lerInt("Digite uma nova duração válida (inteiro positivo.): ");
+                    }
                     filme.setDuracaoMinutos(novaDuracao);
                     System.out.println("Duração alterada na memória.");
                     break;
@@ -206,7 +217,7 @@ public class Menu {
                     System.out.println("Operação cancelada. Nenhuma alteração foi salva.");
                     return; //Sai como failsafe, sem alterações.
 
-                    
+
                 default:
                     System.out.println("Opção inválida.");
                     break;

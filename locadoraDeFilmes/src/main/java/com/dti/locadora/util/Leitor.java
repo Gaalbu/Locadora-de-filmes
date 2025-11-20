@@ -2,6 +2,7 @@ package com.dti.locadora.util;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.format.DateTimeFormatter;
 import java.io.BufferedReader;
 
 
@@ -49,5 +50,28 @@ public class Leitor {
                 System.err.println("Erro: O valor digitado não é um número inteiro válido. Tente novamente.");
             }
         }
+    }
+
+    /*
+    Lê uma string que será formatada para o padrão DATETIME
+    
+    */
+
+    public String lerDataValida (String prompt) {
+        String dataInput = "";
+        while(true){
+            dataInput = lerString(prompt + "(YYYY-MM-DD HH:MM:SS, ou VAZIO): ");
+            
+            if (dataInput.isEmpty()){
+                return dataInput; //Retorna string vazia para o DAO usar NOW()
+            }
+        
+            try {
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").parse(dataInput);
+                return dataInput;
+            } catch (java.time.format.DateTimeParseException e) {
+                System.err.println("Formato de data inválido. Use o padrão YYYY-MM-DD HH:MM:SS.");
+            }
+        }  
     }
 }

@@ -11,11 +11,6 @@ public class ConexaoDatabase {
     
     public static Connection conectar() throws SQLException{
         Connection conn = DriverManager.getConnection(URL_CONEXAO);
-
-        if (!conn.isClosed()){
-            System.out.println("Conexão aberta com sucesso!");
-        }
-
         
         return conn;
     }
