@@ -22,8 +22,8 @@ public class Leitor {
     
     */
     
-    public String lerString (String entrada){
-        System.out.println(entrada);
+    public String lerString (String prompt){
+        System.out.println(prompt);
         try {
             String linha = reader.readLine();
             // Se for nula, retorna string vazia para evitar erros (NullPointerException);
@@ -39,9 +39,9 @@ public class Leitor {
     Lê um número inteiro com validação.
     Tem um loop que continua até que o usuário digite um inteiro válido.
     */
-    public int lerInt(String entrada){
+    public int lerInt(String prompt){
         while (true) {
-            String input = lerString(entrada);
+            String input = lerString(prompt);
             
             try{
                 return Integer.parseInt(input.trim());

@@ -3,7 +3,6 @@ package com.dti.locadora.dao;
 import com.dti.locadora.model.Filme;
 import com.dti.locadora.util.ConexaoDatabase;
 
-import java.io.Serial;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
