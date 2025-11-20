@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FilmeDAOValidationTest { 
     
     private FilmeDAO filmeDAO;
-    private static final DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyy-MM--dd HH:mm:ss");
+    private static final DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     //Config ANTES de cada teste
     @BeforeEach

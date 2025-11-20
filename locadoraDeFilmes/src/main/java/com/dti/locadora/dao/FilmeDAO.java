@@ -25,10 +25,17 @@ public class FilmeDAO implements FilmeDAOInterface{
 
     @Override
     public int inserir(Filme filme){
+        int filmeId = -1; //ID padrão para debug de falhas.
+
+        if (filme.getTitulo() == null || filme.getTitulo().trim().isEmpty()){
+            logger.warn("Tentativa de atualizar filme ID {} com título vazio/nulo barrada", filme.getId());
+            return filmeId;
+        }
+        
         String sql = "INSERT INTO filmes (titulo, duracaoMinutos, genero, anoLancamento) VALUES (?,?,?,?)";
         logger.debug("Tentando inserir filme com título: {}", filme.getTitulo());
 
-        int filmeId = -1; //ID padrão para debug de falhas.
+        
 
         try (Connection conn = conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -122,6 +129,14 @@ public class FilmeDAO implements FilmeDAOInterface{
 
     @Override
     public boolean atualizar (Filme filme){
+        //Validação se o título não é nulo.
+        if (filme.getTitulo() == null || filme.getTitulo().trim().isEmpty()){
+            logger.warn("Tentativa de atualizar filme ID {} com título vazio/nulo barrada", filme.getId());
+            return false;
+        }
+        
+        
+        
         String sql = "UPDATE filmes SET titulo = ?, duracaoMinutos = ?, genero = ?,anoLancamento = ? WHERE id = ?";
         logger.debug("Tentando atualizar filme ID: {}", filme.getId());
         
