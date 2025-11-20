@@ -38,9 +38,13 @@ O sistema gerencia a entidade **Filme**, que representa o item principal do cat�
 | Propriedade | Tipo (Java) | Tipo (SQL) | Obrigatório? | Descrição|
 
 **ID** | `int` | `INTEGER PK` | **Sim** | Identificador único gerado automaticamente pelo banco. |
+
 **Título** | `String` | `TEXT` | **Sim** | Nome do filme. Não pode ser vazio ou nulo. |
+
 **Duração** | `int` | `INTEGER` | **Sim** | Duração em minutos (Validação: 30 a 300 min). |
+
 **Gênero** | `String` | `TEXT` | **Não** | Gênero principal da obra (Ação, Drama, etc). |
+
 **Data Lançamento** | `String` | `DATETIME` | **Não** | Data de cadastro. *Se vazio, assume a data/hora atual.* |
 
 
