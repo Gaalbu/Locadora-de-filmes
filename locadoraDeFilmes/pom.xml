@@ -51,6 +51,7 @@
               <!--Value: Nível de log(info = limpo; debug = detalhado)--> 
               <value>info</value>
             </systemProperty>
+
           </systemProperties>
         
         </configuration>
