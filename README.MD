@@ -37,15 +37,15 @@ O sistema gerencia a entidade **Filme**, que representa o item principal do cat�
 
 | Propriedade | Tipo (Java) | Tipo (SQL) | Obrigatório? | Descrição|
 
-**ID** | `int` | `INTEGER PK` | **Sim** | Identificador único gerado automaticamente pelo banco. |
+|**ID** | `int` | `INTEGER PK` | **Sim** | Identificador único gerado automaticamente pelo banco. |
 
-**Título** | `String` | `TEXT` | **Sim** | Nome do filme. Não pode ser vazio ou nulo. |
+|**Título** | `String` | `TEXT` | **Sim** | Nome do filme. Não pode ser vazio ou nulo. |
 
-**Duração** | `int` | `INTEGER` | **Sim** | Duração em minutos (Validação: 30 a 300 min). |
+|**Duração** | `int` | `INTEGER` | **Sim** | Duração em minutos (Validação: 30 a 300 min). |
 
-**Gênero** | `String` | `TEXT` | **Não** | Gênero principal da obra (Ação, Drama, etc). |
+|**Gênero** | `String` | `TEXT` | **Não** | Gênero principal da obra (Ação, Drama, etc). |
 
-**Data Lançamento** | `String` | `DATETIME` | **Não** | Data de cadastro. *Se vazio, assume a data/hora atual.* |
+|**Data Lançamento** | `String` | `DATETIME` | **Não** | Data de cadastro. *Se vazio, assume a data/hora atual.* |
 
 
 **<h2>⚙️ Pré-requisitos</h2>**
@@ -58,7 +58,7 @@ Certifique-se de ter instalado:
 
 `git clone https://github.com/Gaalbu/Locadora-de-filmes.git`
 
-`cd locadoraDeFilmes`
+`cd Locadora-de-filmes/locadoraDeFilmes`
 
 2. **Compile e baixe as dependências**:
 
@@ -67,7 +67,21 @@ Certifique-se de ter instalado:
 *obs: Este comando também executará os testes unitários automaticamente.*
 
 **<h2>▶️ Como Rodar a Aplicação</h2>**
-A aplicação pode ser executada diretamente via Maven ou através da sua IDE de preferência.
+Para garantir uma melhor experiência com acentuação e codificação, o projeto inclui scripts de execução automática.
+
+**🪟 Windows**
+Basta executar o script `run.bat` na raiz do projeto.
+1. Abra o terminal na pasta do projeto.
+
+2. Digite: `.\run.bat` 
+
+**🐧 Linux / 🍎 macOS**
+1. Abra o terminal na pasta do projeto.
+
+2. Digite:
+`chmod +x run.sh` -> na primeira vez, para dar permissão
+
+`./run.sh`
 
 **Via terminal (Recomendado!)**
 Para iniciar o Menu:
@@ -85,17 +99,20 @@ Para rodar os testes isoladamente:
 *Os testes são configurados para criar e popular as tabelas antes de cada execução.*
 
 **<h2>📝 Configuração de Logs (Debug vs. Usuário)</h2>**
-O projeto utiliza *SLF4J* para gerenciar logs. Você pode alternar entre ver detalhes técnicos (SQL, conexões) ou apenas a interface limpa do usuário.
 
-1. **Modo Usuário (Padrão)**
-Exibe apenas o menu e mensagens importantes.
+O projeto utiliza **SLF4J** e seu nível de log padrão (`info` - modo "limpo") é definido no `pom.xml` via **systemProperties** para evitar logs técnicos no console.
 
-`mvn exec:java -Dorg.slf4j.simpleLogger.defaultLogLevel=info`
+**Para alternar para o modo Debug(para ver queries SQL e logs internos):**
 
-2. **Modo Desenvolvedor (Debug com mais detalhes)**
-Exibe queries SQL executadas, tentativas de conexão e logs internos do DAO.
+1. Abra o arquivo `pom.xml`.
 
-`mvn exec:java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug`
+2. Localize a tag `<systemProperty` dentro do `exec-maven-plugin`.
+
+3. Altere o valor da propriedade:
+    * **De (Modo info):** `<value>info</value>` 
+    * **Para (Modo Debug):** Altere para `<value>debug</value>`
+
+4. Salve o `pom.xml` e execute novamente `mvn exec:java`.
 
 **<h2>🛠️ Solução de Problemas Comuns</h2>**
 

@@ -2,6 +2,10 @@ package com.dti.locadora.app;
 
 import com.dti.locadora.util.Leitor;
 import com.dti.locadora.model.Filme;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import com.dti.locadora.dao.FilmeDAO;
 
 /*
@@ -17,6 +21,9 @@ public class Menu {
 
     //Instancia leitor para capturarmos o IO do usuário.
     private final Leitor leitorInputs = new Leitor();
+
+    //Formatador para validação (o mesmo usado no DAO)
+    private static final DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     
     public void executar(){
         int opcao = -1;
@@ -77,6 +84,28 @@ public class Menu {
         }
     }
 
+    /*
+    Força o usuário a digitar uma data válida ou deixar em branco.
+    */
+   private String lerDataValida(String mensagem){
+        while(true){
+            String input = leitorInputs.lerString(mensagem + " (yyyy-MM-dd HH:mm:ss) [ou 'Enter' para Data Atual]: ");
+
+            if(input.trim().isEmpty()){
+                return "";
+            }
+
+            try {
+                LocalDateTime.parse(input,formatador);
+                return input;
+            } catch (Exception e) {
+                System.out.println("Data inválida! Use o formato exato: yyyy-MM-dd HH:mm:ss");
+                System.out.println("Exemplo: 2024-12-31 23:59:59");
+
+            }
+        }
+   }
+
     private void cadastrarFilme(){
         System.out.println("\n --- Cadastro de filme --- ");
         String tituloFilme = leitorInputs.lerString("Título: ");
@@ -93,7 +122,7 @@ public class Menu {
         
 
         //Data é opcional aqui, sendo now() por default...
-        String data = leitorInputs.lerDataValida("Digite a data de lançamento do filme ");
+        String data = lerDataValida("Data de lançamento");
 
         
         Filme novoFilme = new Filme(tituloFilme,duracao ,genero, data);
@@ -179,27 +208,24 @@ public class Menu {
                         novaDuracao = leitorInputs.lerInt("Digite uma nova duração válida (inteiro positivo.): ");
                     }
                     filme.setDuracaoMinutos(novaDuracao);
-                    System.out.println("Duração alterada na memória.");
                     break;
             
                 case 3:
                     System.out.println("Gênero atual: " + filme.getGenero());
                     String novoGenero = leitorInputs.lerString("Novo gênero: ");
                     filme.setGenero(novoGenero);
-                    System.out.println("Gênero alterado na memória.");
                     break;
 
                 case 4:
                     System.out.println("Data atual: " + filme.getAnoLancamento());
                     System.out.println("Deixe vazio para usar data/hora atual.");
-                    String novaData = leitorInputs.lerString("Nova data (YYYY-MM-DD HH:MM:SS): ");
+                    String novaData = lerDataValida("Nova Data");
 
                     if(novaData.isEmpty()){
                         novaData = null;
                     } 
 
                     filme.setAnoLancamento(novaData);
-                    System.out.println("Data alterada na memória.");
                     break;
 
                 case 9:
