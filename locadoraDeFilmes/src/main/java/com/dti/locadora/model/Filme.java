@@ -17,6 +17,14 @@ public class Filme {
         this.genero = genero;
     }
 
+    //Segundo construtor gerado para usarmos quando buscarmos um filme.
+    public Filme(int id,String titulo, int duracaoMinutos, String genero){
+        this.id = id;
+        this.titulo = titulo;
+        this.duracaoMinutos = duracaoMinutos;
+        this.genero = genero;
+    }
+
     //Getters
 
     public int getId() {
@@ -35,5 +43,22 @@ public class Filme {
         return genero;
     }
     
+    //Setters, talvez serão usados para Update.
+
+    public void setTitulo(String titulo) { 
+        this.titulo = titulo; 
+    }
+    public void setDuracaoMinutos(int duracaoMinutos) { 
+        this.duracaoMinutos = duracaoMinutos; 
+    }
+    public void setGenero(String genero) { 
+        this.genero = genero; 
+    }
+
+    @Override
+    public String toString(){
+        return String.format("ID: %d | Título: %s | Gênero: %s | Duração: %d min", id, titulo, genero, duracaoMinutos);
+    }
+
 
 }

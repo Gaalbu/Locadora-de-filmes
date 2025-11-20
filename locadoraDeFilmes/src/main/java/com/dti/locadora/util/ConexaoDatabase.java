@@ -1,4 +1,4 @@
-package locadoraFilmes;
+package com.dti.locadora.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

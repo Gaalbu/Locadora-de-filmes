@@ -27,7 +27,7 @@ public class Menu {
             exibirOpcoes();
             System.out.println("Escolha uma opção de 0 a 5");
             
-            //opcao = leitorInputs.lerInt("Escolha uma opção: ");
+            opcao = leitorInputs.lerInt("Escolha uma opção: ");
             
             
             processarOpcao(opcao);
@@ -78,17 +78,39 @@ public class Menu {
         }
     }
 
-    private void cadastrarFilme() throws Exception{
-        System.out.println("\n --- Cadastro --- ");
+    private void cadastrarFilme(){
+        System.out.println("\n --- Cadastro de filme --- ");
         
-        //String tituloFilme = leitorInputs.lerString("Título: ");
-        //int duracao = leitor.lerInt("Duração (em minutos): ")    
-        //String genero = leitor.lerString("Gênero: ");
+        String tituloFilme = leitorInputs.lerString("Título: ");
+        int duracao = leitorInputs.lerInt("Duração (em minutos): ");    
+        String genero = leitorInputs.lerString("Gênero: ");
 
-        //Filme novoFilme = new Filme(tituloFilme,duracao ,genero);
+        Filme novoFilme = new Filme(tituloFilme,duracao ,genero);
         //filmeDAO.inserir(novoFilme);
     }
     
 
-    //continuar criando métodos crud no menu
+    private void buscarFilmes(){
+        //Implementação completa em andamento...
+
+        System.out.println("\n --- Busca por filme ---");
+    }
+
+    private void listarFilmes(){
+        //Implementação completa em andamento...
+
+        System.out.println("\n --- Listagem de filmes ---");
+    }
+
+    private void atualizarFilme(){
+        //Implementação completa em andamento...
+
+        System.out.println("\n --- Atualizar filme ---");
+    }
+
+    private void excluirFilme(){
+        //Implementação completa em andamento...
+
+        System.out.println("\n --- Excluir filme ---");
+    }
 }
