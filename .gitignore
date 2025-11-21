@@ -1,0 +1,8 @@
+target/
+*.db
+.vscode/
+.idea/
+*.log
+*.iml
+.DS_Store
+*.sqlite

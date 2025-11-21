@@ -1,8 +1,0 @@
-# ignorando aqui os arquivos da build maven (estavam sendo mandados para o git...)
-target/
-
-# ignorando arquivos do vscode e outras ides
-*.iml
-.idea/
-.classpath
-.project

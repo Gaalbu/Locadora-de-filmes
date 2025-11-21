@@ -114,6 +114,8 @@ O projeto utiliza **SLF4J** e seu nível de log padrão (`info` - modo "limpo") 
 
 4. Salve o `pom.xml` e execute novamente `mvn exec:java`.
 
+*Exemplos de logs de execução (modo DEBUG) estão disponibilizados no arquivo `logs_exemplo.txt`.*
+
 **<h2>🛠️ Solução de Problemas Comuns</h2>**
 
 **Erro: "Database is locked"**
