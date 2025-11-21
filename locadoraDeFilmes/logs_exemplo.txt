@@ -1,0 +1,274 @@
+PS D:\Users\Usuario\Desktop\codigos\VSCODE\projetoDTI\locadoraDeFilmes> .\run.bat
+==========================================
+  Iniciando Locadora DTI (Windows)
+==========================================
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dti.locadora:locadoraDeFilmes >------------------
+[INFO] Building locadoraDeFilmes 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.1.0:java (default-cli) @ locadoraDeFilmes ---
+16:13:55.959 INFO App - Inicializando sistema...
+16:13:56.070 DEBUG TabelaSQLite - Verificando a integridade das tabelas...
+16:13:56.140 INFO TabelaSQLite - Tabelas verificadas/criadas com sucesso.
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+1
+
+ --- Cadastro de filme ---
+Título:
+o filme dos logs
+Gênero: 
+aventura
+Duração (30 a 300 minutos): 
+35
+Data de lançamento (yyyy-MM-dd HH:mm:ss) [ou 'Enter' para Data Atual]: 
+
+16:14:22.743 DEBUG FilmeDAO - Tentando inserir filme com título: o filme dos logs
+16:14:22.747 DEBUG FilmeDAO - Data de lançamento vazia, usando data atual: 2025-11-21 16:14:22
+16:14:22.842 DEBUG FilmeDAO - Filme inserido com sucesso! ID: 1
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+2
+
+ --- Listagem de filmes ---
+16:14:28.918 DEBUG FilmeDAO - Buscando todos os filmes...
+16:14:28.920 DEBUG FilmeDAO - Busca de filmes finalizada. Total encontrado: 1
+ID: 1 | Título: o filme dos logs | Gênero: aventura | Data: 2025-11-21 16:14:22
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+3
+
+ --- Busca por filme ---
+Digite o ID do filme:
+1
+16:14:37.630 DEBUG FilmeDAO - Buscando filme por ID: 1
+16:14:37.631 DEBUG FilmeDAO - Filme encontrado: o filme dos logs
+Filme encontrado:
+ID: 1 | Título: o filme dos logs | Gênero: aventura | Data: 2025-11-21 16:14:22
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+4
+
+ --- Atualizar filme ---
+Digite o ID do filme que deseja alterar:
+1
+16:14:46.582 DEBUG FilmeDAO - Buscando filme por ID: 1
+16:14:46.583 DEBUG FilmeDAO - Filme encontrado: o filme dos logs
+
+--------------------------------
+Editando: o filme dos logs
+Dados Atuais: ID: 1 | Título: o filme dos logs | Gênero: aventura | Data: 2025-11-21 16:14:22
+--------------------------------
+O que você deseja alterar?
+1. Título
+2. Duração
+3. Gênero
+4. Data de Lançamento
+9. SALVAR E SAIR (Confirmar Alterações)
+0. CANCELAR (Sair sem salvar)
+Escolha:
+1
+Título atual: o filme dos logs
+Novo título:
+o filme dos logs 2
+Título alterado na memória.
+
+--------------------------------
+Editando: o filme dos logs 2
+Dados Atuais: ID: 1 | Título: o filme dos logs 2 | Gênero: aventura | Data: 2025-11-21 16:14:22
+--------------------------------
+O que você deseja alterar?
+1. Título
+2. Duração
+3. Gênero
+4. Data de Lançamento
+9. SALVAR E SAIR (Confirmar Alterações)
+0. CANCELAR (Sair sem salvar)
+Escolha:
+9
+16:14:59.198 DEBUG FilmeDAO - Tentando atualizar filme ID: 1
+16:14:59.327 DEBUG FilmeDAO - Filme ID 1 atualizado com sucesso.
+Filme atualizado com sucesso no banco de dados!
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+2
+
+ --- Listagem de filmes ---
+16:15:03.749 DEBUG FilmeDAO - Buscando todos os filmes...
+16:15:03.751 DEBUG FilmeDAO - Busca de filmes finalizada. Total encontrado: 1
+ID: 1 | Título: o filme dos logs 2 | Gênero: aventura | Data: 2025-11-21 16:14:22
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+5
+
+ --- Excluir filme ---
+Digite o ID do filme a ser excluído:
+1
+Tem certeza? digite 1 para 'Sim'
+1
+16:15:14.050 DEBUG FilmeDAO - Filme ID 1 excluído com sucesso.
+Filme excluído com sucesso!
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+1
+
+ --- Cadastro de filme ---
+Título:
+
+Gênero: 
+
+Duração (30 a 300 minutos): 
+30
+Data de lançamento (yyyy-MM-dd HH:mm:ss) [ou 'Enter' para Data Atual]: 
+
+16:15:24.422 WARN FilmeDAO - Tentativa de atualizar filme ID 0 com título vazio/nulo barrada
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+1
+
+ --- Cadastro de filme ---
+Título:
+
+Gênero: 
+
+Duração (30 a 300 minutos): 
+0
+Duração inválida. Deve estar entre 30 e 300 minutos.
+Duração (30 a 300 minutos):
+3001
+Duração inválida. Deve estar entre 30 e 300 minutos.
+Duração (30 a 300 minutos):
+300
+Data de lançamento (yyyy-MM-dd HH:mm:ss) [ou 'Enter' para Data Atual]: 
+203
+Data inválida! Use o formato exato: yyyy-MM-dd HH:mm:ss
+Exemplo: 2024-12-31 23:59:59
+Data de lançamento (yyyy-MM-dd HH:mm:ss) [ou 'Enter' para Data Atual]:
+
+16:15:45.502 WARN FilmeDAO - Tentativa de atualizar filme ID 0 com título vazio/nulo barrada
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+1
+
+ --- Cadastro de filme ---
+Título:
+titulo muito original
+Gênero: 
+
+Duração (30 a 300 minutos): 
+34
+Data de lançamento (yyyy-MM-dd HH:mm:ss) [ou 'Enter' para Data Atual]: 
+
+16:16:00.549 DEBUG FilmeDAO - Tentando inserir filme com título: titulo muito original
+16:16:00.550 DEBUG FilmeDAO - Data de lançamento vazia, usando data atual: 2025-11-21 16:16:00
+16:16:00.662 DEBUG FilmeDAO - Filme inserido com sucesso! ID: 1
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+2
+
+ --- Listagem de filmes ---
+16:16:07.022 DEBUG FilmeDAO - Buscando todos os filmes...
+16:16:07.024 DEBUG FilmeDAO - Busca de filmes finalizada. Total encontrado: 1
+ID: 1 | Título: titulo muito original | Gênero: Não informado | Data: 2025-11-21 16:16:00
+=====================
+1. Cadastrar um novo filme
+2. Listar todos os filmes
+3. Buscar um filme por ID
+4. Atualizar informações do filme
+5. Deletar filme cadastrado
+0. Sair
+=====================
+Escolha uma opção de 0 a 5
+Escolha uma opção:
+0
+Saindo da aplicação. Até logo!
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:22 min
+[INFO] Finished at: 2025-11-21T16:16:18-03:00
+[INFO] ------------------------------------------------------------------------

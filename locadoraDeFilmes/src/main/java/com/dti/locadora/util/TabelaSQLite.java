@@ -6,18 +6,23 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.stream.Collectors;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TabelaSQLite {
+    private static final Logger logger = LoggerFactory.getLogger(TabelaSQLite.class);
+    
     //Caminho relativo para 'resources', acessando sem erro.
     private static final String ARQUIVO_SCRIPT = "sql/criar_tabelas.sql";
 
     public static void criarTabelas(Connection conn){
+        //Log de debug para querys de verificação e criação.
+        logger.debug("Verificando a integridade das tabelas...");
+        
         //Vai armazenar todo o nosso script para sua criação com os statements do SQLite.
         String scriptSql = "";
 
         try{
-
             //Utilizando de ClassLoader para achar o arquivo e funcionar mesmo que seja JAR.
             InputStream is = TabelaSQLite.class.getClassLoader().getResourceAsStream(ARQUIVO_SCRIPT);
 
@@ -31,7 +36,7 @@ public class TabelaSQLite {
                 scriptSql = leitorArquivosSql.lines().collect(Collectors.joining("\n"));
             
             }catch(Exception e){
-                System.err.println("Erro ao ler o script SQL: " + e.getMessage());
+                logger.error("Erro ao ler o script SQL: {}" + e.getMessage(), e);
                 return;
             }
 
@@ -40,13 +45,13 @@ public class TabelaSQLite {
                 //Se tudo for atendido corretamente, executamos a criação :)
 
                 stmt.executeUpdate(scriptSql);
-                System.out.println("");
+                logger.info("Tabelas verificadas/criadas com sucesso.");
             }catch(SQLException e){
-                System.err.println("Erro ao executar scripts SQL: " + e.getMessage());
+                logger.error("Erro ao executar scripts SQL: {}" + e.getMessage(), e);
             }
         
         } catch (Exception e) { 
-            System.err.println("Ocorreu um erro durante a criação das tabelas: " + e.getMessage());
+            logger.error("Ocorreu um erro durante a criação das tabelas: {}" + e.getMessage(), e);
         }
     }
 }

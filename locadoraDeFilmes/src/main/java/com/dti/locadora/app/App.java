@@ -4,24 +4,26 @@ import com.dti.locadora.util.ConexaoDatabase;
 import com.dti.locadora.util.TabelaSQLite;
 import java.sql.Connection;
 import java.sql.SQLException;
+import org.slf4j.Logger; //logging
+import org.slf4j.LoggerFactory;
 
 public class App 
 {
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
     public static void main( String[] args )
     {
         Menu menu = new Menu();
 
-        System.out.println("Inicializando sistema...");
+        logger.info("Inicializando sistema...");
 
         
         //Testa se a conexão do banco de dados realmente está funcionando.
         try (Connection conn = ConexaoDatabase.conectar()){
             TabelaSQLite.criarTabelas(conn);
-            System.out.println("Conexão aberta com sucesso!");
         } //Fecha a conexão ao banco.
         
         catch (SQLException e) {
-            System.err.println("Erro fatal ao inicializar banco de dados: " + e.getMessage());
+            logger.error("Erro fatal ao inicializar banco de dados: {}" + e.getMessage(), e);
             return; //Encerra o progama se não conseguir criar o banco.
         }
         
