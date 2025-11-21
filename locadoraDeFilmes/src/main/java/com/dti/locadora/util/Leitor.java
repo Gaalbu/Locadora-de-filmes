@@ -3,6 +3,7 @@ package com.dti.locadora.util;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.format.DateTimeFormatter;
+import java.nio.charset.StandardCharsets;
 import java.io.BufferedReader;
 
 
@@ -14,7 +15,7 @@ public class Leitor {
     
     public Leitor(){
         //Inicializa o leitor e conecta-o ao IO do console
-        this.reader = new BufferedReader(new InputStreamReader(System.in));
+        this.reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
     }
     
     /*
@@ -26,9 +27,8 @@ public class Leitor {
     public String lerString (String prompt){
         System.out.println(prompt);
         try {
-            String linha = reader.readLine();
             // Se for nula, retorna string vazia para evitar erros (NullPointerException);
-            return linha != null ? linha : "";
+            return reader.readLine().trim();
         } catch (IOException e) {
             System.err.println("Erro ao ler entrada.");
             e.printStackTrace();
