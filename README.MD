@@ -58,7 +58,7 @@ Certifique-se de ter instalado:
 
 `git clone https://github.com/Gaalbu/Locadora-de-filmes.git`
 
-`cd Locadora-de-filmes/locadoraDeFilmes`
+`cd Locadora-de-filmes`
 
 2. **Compile e baixe as dependências**:
 
