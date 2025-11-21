@@ -43,7 +43,7 @@ O sistema gerencia a entidade **Filme**, que representa o item principal do cat�
 
 |**Duração** | `int` | `INTEGER` | **Sim** | Duração em minutos (Validação: 30 a 300 min). |
 
-|**Gênero** | `String` | `TEXT` | **Não** | Gênero principal da obra (Ação, Drama, etc). |
+|**Gênero** | `String` | `TEXT` | **Não*** | Gênero principal da obra (Ação, Drama, etc). *Se vazio, assume "Não informado".* |
 
 |**Data Lançamento** | `String` | `DATETIME` | **Não** | Data de cadastro. *Se vazio, assume a data/hora atual.* |
 
