@@ -112,11 +112,13 @@ public class Menu {
         String genero = leitorInputs.lerString("Gênero: ");
         
         int duracao = -1;
-        while (duracao < 1 || duracao > 300) {
+        while (duracao < 30 || duracao > 300) {
             //Valor arbitrário para duração de filmes.
             duracao = leitorInputs.lerInt("Duração (30 a 300 minutos): ");
             if (duracao < 30 || duracao > 300){
                 System.err.println("Duração inválida. Deve estar entre 30 e 300 minutos.");
+            }else{
+                break;
             }
         }
         

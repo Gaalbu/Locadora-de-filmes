@@ -6,6 +6,10 @@ package com.dti.locadora.model;
 */
 
 public class Filme {
+    
+
+    public static final String GENERO_PADRAO = "Não informado";
+
     private int id; //Sendo gerado pelo SQLite
     private String titulo;
     private int duracaoMinutos;
@@ -17,7 +21,9 @@ public class Filme {
     public Filme(String titulo, int duracaoMinutos, String genero, String anoLancamento) {
         this.titulo = titulo;
         this.duracaoMinutos = duracaoMinutos;
-        this.genero = genero;
+        
+        //Valida aqui o gênero
+        this.setGenero(genero);
         this.anoLancamento = anoLancamento;
     }
 
@@ -26,7 +32,7 @@ public class Filme {
         this.id = id;
         this.titulo = titulo;
         this.duracaoMinutos = duracaoMinutos;
-        this.genero = genero;
+        this.setGenero(genero);
         this.anoLancamento = anoLancamento;
     }
 
@@ -61,7 +67,11 @@ public class Filme {
         this.duracaoMinutos = duracaoMinutos; 
     }
     public void setGenero(String genero) { 
-        this.genero = genero; 
+        if(genero == null || genero.trim().isEmpty()){
+            this.genero = GENERO_PADRAO;
+        }else{
+            this.genero = genero.trim(); 
+        }
     }
 
     public void setAnoLancamento(String anoLancamento) {

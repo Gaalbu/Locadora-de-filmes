@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter; //formatando em string
 public class FilmeDAO implements FilmeDAOInterface{
     
     private static final Logger logger = LoggerFactory.getLogger(FilmeDAO.class);
-    
+
     //Método auxiliar para obter a conexão.
     private Connection conectar() throws SQLException{
         return ConexaoDatabase.conectar();
